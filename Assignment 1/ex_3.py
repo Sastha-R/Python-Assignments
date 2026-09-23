@@ -51,7 +51,7 @@ while(True):
         case 4:
             pin_change()
         case 5 :
-            print("exiting")
+            print("exited")
             break
             
         
