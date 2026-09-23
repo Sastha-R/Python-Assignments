@@ -26,7 +26,7 @@ def WithDraw():
 def pin_change():
     global pin
     global attempt
-    if(attempt > 3):
+    if(attempt <= 3):
         entered_pin = input("Enter current PIN: ")
         if entered_pin == pin:
             pin = input("Enter new PIN: ")
@@ -34,6 +34,8 @@ def pin_change():
         else:
             attempt += 1
             print("Wrong PIN")
+    else:
+        print("attempt over")
 
 
 while(True):
