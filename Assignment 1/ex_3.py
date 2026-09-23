@@ -39,8 +39,8 @@ def pin_change():
 
 
 while(True):
-    print("enter your choice: ")
-    ch = int(input("1. Check Balance 2. Deposit 3. Withdraw 4. Change PIN 5. Exit "))
+    print()
+    ch = int(input("1. Check Balance 2. Deposit 3. Withdraw 4. Change PIN 5. Exit \n enter your choice: "))
     match ch:
         case 1:
             check_Balance()
