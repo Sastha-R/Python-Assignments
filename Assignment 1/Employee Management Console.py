@@ -1,3 +1,28 @@
+"""
+Employee Management Console 
+Maintain employee details using a collection. 
+
+Menu: 
+    1. Add Employee 
+    2. View Employees 
+    3. Search Employee 
+    4. Find Highest Salary 
+    5. Display Employees by Department 
+    6. Exit 
+
+Use: 
+    List  
+    Dictionary  
+    Loop  
+    match-case  
+    Conditions  
+    Searching  
+    Comprehension  """
+
+
+
+
+
 
 employees = []
 
@@ -21,7 +46,7 @@ def add_employee():
 
 
 def view_employees():
-    if len(employees) == 0:
+    if not employees:
         print("No employees found.")
     else:
         print("\nEmployee Details")
@@ -55,14 +80,14 @@ def search_employee():
 
 
 def highest_salary():
-    if len(employees) == 0:
-        print("No employees found.")
-    else:
-        highest = employees[0]
 
-        for employee in employees:
-            if employee["salary"] > highest["salary"]:
-                highest = employee
+    if not employees:
+        print("No employees found.")
+
+    else:
+        highest = max(employees, key=lambda employee: employee["salary"])
+
+        
 
         print("\nEmployee with Highest Salary")
         print("ID         :", highest["id"])
@@ -78,7 +103,7 @@ def employees_by_department():
 
     if department_employees:
         print("\nEmployees in", department)
-
+    
         for employee in department_employees:
             print(employee["id"],"\n",employee["name"],"\n",employee["salary"])
     else:
