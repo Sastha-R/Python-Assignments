@@ -1,0 +1,11 @@
+id,coursename,duration,fees,staff,credits
+1,Python Programming,3 ,15000,Walter White,4
+2,Web Development,4 ,20000,Jesse Pinkman,5
+3,Data Science,6 ,35000,Saul Goodman,6
+4,Machine Learning,5 ,30000,Gustavo Fring,5
+5,Java Programming,3 ,18000,Mike Ehrmantraut,4
+6,Database Management,2 ,12000,Kim Wexler,3
+7,Cloud Computing,4 ,25000,Nacho Varga,5
+8,Artificial Intelligence,6 ,40000,Chuck McGill,6
+9,Cyber Security,5 ,32000,Hank Schrader,5
+10,React Development,3 ,17000,Howard Hamlin,4
