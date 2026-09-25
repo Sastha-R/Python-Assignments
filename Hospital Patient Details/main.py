@@ -53,7 +53,6 @@ def add_patient(patients: list[dict]) -> None:
 
 
 def view_patients(patients: list[dict]) -> None:
-
     for index, patient in enumerate(patients, start=1):
         print(
             index,
