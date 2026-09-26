@@ -8,3 +8,4 @@ load_dotenv()
 COURSE_FILE : Path = Path(os.getenv("COURSE_FILE"))
 
 ENROLL_FILE : Path = Path(os.getenv("ENROLL_FILE"))
+
