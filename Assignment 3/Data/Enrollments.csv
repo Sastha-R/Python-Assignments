@@ -1,3 +1,4 @@
 enrollment_id,student_name,course_id,course_name,duration,fees,staff,credits
-
-1,JACKIE,7,Cloud Computing,4 ,25000,Nacho Varga,5
+1,john,2,Web Development,4 ,20000,Jesse Pinkman,5
+2,wick,4,Machine Learning,5 ,30000,Gustavo Fring,5
+3,sfd sdf,2,Web Development,4 ,20000,Jesse Pinkman,5
