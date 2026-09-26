@@ -49,10 +49,11 @@ def enroll_course() -> None:
                 print("Invalid course ID. ID should be between 1 and ",course_count)
                 return
 
-            found = False
 
-            for course in courses:
-                if int(course["id"]) == course_id:
+            found_course = [course for course in courses if int(course["id"]) == course_id]
+
+            for course in found_course:
+                
                     print("\nSelected Course:")
                     print(f"Course Name : {course['coursename']}")
                     print(f"Duration    : {course['duration']} Months")
@@ -60,10 +61,9 @@ def enroll_course() -> None:
                     print(f"Staff       : {course['staff']}")
                     print(f"Credits     : {course['credits']}")
                     save_enrollment(student_name,course)
-                    found = True
                     break
 
-            if not found:
+            if not found_course:
                 print("\nno such course id")
     except ValueError:
         print("Course ID must be a number")
@@ -80,7 +80,8 @@ def display_enrollments() -> None:
             print("No enrollments found.")
             return
 
-          for enrollment in enrollments :
+          for enrollment in sorted(enrollments, key=lambda enrollment: int(enrollment["enrollment_id"])):
+              
               print("Enrollment ID : ",enrollment["enrollment_id"]) 
               print("Student Name  : ",enrollment["student_name"],)
               print("Course ID     : ",enrollment["course_id"],)

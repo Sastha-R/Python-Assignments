@@ -28,10 +28,9 @@ def search_course() -> None:
         with open(COURSE_FILE, "r") as file:
             courses = csv.DictReader(file)
 
-            found = False
+            course_found = [course for course in courses if course_name.lower() in course["coursename"].lower()]
 
-            for course in courses:
-                if course_name.lower() in course["coursename"].lower():
+            for course in course_found:
                     print("\nCourse Found:")
                     print(f"Course ID   : {course['id']}")
                     print(f"Course Name : {course['coursename']}")
@@ -41,9 +40,8 @@ def search_course() -> None:
                     print(f"Credits     : {course['credits']}")
                     print("----------------------------------------")
 
-                    found = True
 
-            if not found:
+            if not course_found:
                 print("Course not found.")
     except FileNotFoundError:
         print("Course file not found.")

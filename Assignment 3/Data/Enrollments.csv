@@ -3,3 +3,5 @@ enrollment_id,student_name,course_id,course_name,duration,fees,staff,credits
 2,wick,4,Machine Learning,5 ,30000,Gustavo Fring,5
 3,sfd sdf,2,Web Development,4 ,20000,Jesse Pinkman,5
 4,tobey,7,Cloud Computing,4 ,25000,Nacho Varga,5
+5,hendry,9,Cyber Security,5 ,32000,Hank Schrader,5
+6,tharnish,10,React Development,3 ,17000,Howard Hamlin,4
