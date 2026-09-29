@@ -1,8 +1,5 @@
-enrollment_id,student_name,course_id,course_name,duration,fees,staff,credits
-1,john,2,Web Development,4 ,20000,Jesse Pinkman,5
-2,wick,4,Machine Learning,5 ,30000,Gustavo Fring,5
-3,sfd sdf,2,Web Development,4 ,20000,Jesse Pinkman,5
-4,tobey,7,Cloud Computing,4 ,25000,Nacho Varga,5
-5,hendry,9,Cyber Security,5 ,32000,Hank Schrader,5
-6,tharnish,10,React Development,3 ,17000,Howard Hamlin,4
-7,maanikam,5,Java Programming,3 ,18000,Mike Ehrmantraut,4
+enrollment_id,student_name,student_phone,course_id,course_name,duration,fees,staff,credits
+1,hendry,9876543289,6,Database Management,2 ,12000,Kim Wexler,3
+2,david,7465398764,8,Artificial Intelligence,6 ,40000,Chuck McGill,6
+3,quil,9876789098,4,Machine Learning,5 ,30000,Gustavo Fring,5
+4,howard,9898987654,9,Cyber Security,5 ,32000,Hank Schrader,5

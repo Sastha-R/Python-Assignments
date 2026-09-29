@@ -2,7 +2,7 @@ from Modules.course import Course
 from Modules.enrollment import Enrollment
 
 
-fields : list = ['enrollment_id','student_name','course_id','course_name','duration','fees',"staff","credits"]
+fields : list = ['enrollment_id','student_name','student_phone','course_id','course_name','duration','fees',"staff","credits"]
 
 
 course_object = Course()
@@ -15,7 +15,8 @@ while True:
     print("2. Enroll Course")
     print("3. View Enrollments")
     print("4. Search Course")
-    print("5. Exit")
+    print("5. Cancel Enrollment")
+    print("6. Exit")
 
     try:
         choice : int = int(input("Enter your choice: "))
@@ -33,7 +34,10 @@ while True:
             case 4:
                 course_object.search_course()
 
-            case 5:
+            case 5 :
+                enroll_object.cancel_enrollment()
+
+            case 6:
                 print("Exited")
                 break
 
