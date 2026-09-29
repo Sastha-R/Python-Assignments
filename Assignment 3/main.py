@@ -1,5 +1,13 @@
-from Modules.course import *
-from Modules.enrollment import *
+from Modules.course import Course
+from Modules.enrollment import Enrollment
+
+
+fields : list = ['enrollment_id','student_name','course_id','course_name','duration','fees',"staff","credits"]
+
+
+course_object = Course()
+enroll_object = Enrollment(fields)
+
 
 while True:
 
@@ -14,16 +22,16 @@ while True:
 
         match choice:
             case 1:
-                display_courses()
+                course_object.display_courses()
 
             case 2:
-                enroll_course()
+                enroll_object.enroll_course()
 
             case 3:
-                display_enrollments()
+                enroll_object.display_enrollments()
 
             case 4:
-                search_course()
+                course_object.search_course()
 
             case 5:
                 print("Exited")

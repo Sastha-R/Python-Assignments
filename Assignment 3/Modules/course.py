@@ -3,48 +3,48 @@ from pathlib import Path
 from Modules.config import COURSE_FILE
 
 # COURSE_FILE : Path = Path("Data/Course_Details.csv")
+class Course:
+    def display_courses(self) -> None:
+        try:
+            with open(COURSE_FILE,"r") as file:
+                courses = csv.DictReader(file)
 
-def display_courses() -> None:
-    try:
-        with open(COURSE_FILE,"r") as file:
-            courses = csv.DictReader(file)
-
-            for course in courses:
-                print(f"Course ID   : {course['id']}\n"
-                    f"Course Name : {course['coursename']}\n"
-                    f"Duration    : {course['duration']} Months\n"
-                    f"Fees        : {course['fees']}\n"
-                    f"Staff       : {course['staff']}\n"
-                    f"Credits     : {course['credits']}\n"
-                    f"----------------------------------------")
-    except FileNotFoundError:
-        print("Course file not found.")
-
-
-def search_course() -> None:
-    course_name: str = input("Enter course name: ")
-    try:
-
-        with open(COURSE_FILE, "r") as file:
-            courses = csv.DictReader(file)
-
-            course_found = [course for course in courses if course_name.lower() in course["coursename"].lower()]
-
-            for course in course_found:
-                    print("\nCourse Found:")
-                    print(f"Course ID   : {course['id']}")
-                    print(f"Course Name : {course['coursename']}")
-                    print(f"Duration    : {course['duration']} Months")
-                    print(f"Fees        : {course['fees']}")
-                    print(f"Staff       : {course['staff']}")
-                    print(f"Credits     : {course['credits']}")
-                    print("----------------------------------------")
+                for course in courses:
+                    print(f"Course ID   : {course['id']}\n"
+                        f"Course Name : {course['coursename']}\n"
+                        f"Duration    : {course['duration']} Months\n"
+                        f"Fees        : {course['fees']}\n"
+                        f"Staff       : {course['staff']}\n"
+                        f"Credits     : {course['credits']}\n"
+                        f"----------------------------------------")
+        except FileNotFoundError:
+            print("Course file not found.")
 
 
-            if not course_found:
-                print("Course not found.")
-    except FileNotFoundError:
-        print("Course file not found.")
+    def search_course(self) -> None:
+        course_name: str = input("Enter course name: ")
+        try:
+
+            with open(COURSE_FILE, "r") as file:
+                courses = csv.DictReader(file)
+
+                course_found = [course for course in courses if course_name.lower() in course["coursename"].lower()]
+
+                for course in course_found:
+                        print("\nCourse Found:")
+                        print(f"Course ID   : {course['id']}")
+                        print(f"Course Name : {course['coursename']}")
+                        print(f"Duration    : {course['duration']} Months")
+                        print(f"Fees        : {course['fees']}")
+                        print(f"Staff       : {course['staff']}")
+                        print(f"Credits     : {course['credits']}")
+                        print("----------------------------------------")
+
+
+                if not course_found:
+                    print("Course not found.")
+        except FileNotFoundError:
+            print("Course file not found.")
 
 
 
