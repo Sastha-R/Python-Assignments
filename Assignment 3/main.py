@@ -1,5 +1,5 @@
-from Modules.course import Course
-from Modules.enrollment import Enrollment
+from Service.course_service import Course
+from Service.enrollment_service import Enrollment
 
 
 fields : list = ['enrollment_id','student_name','student_phone','course_id','course_name','duration','fees',"staff","credits"]

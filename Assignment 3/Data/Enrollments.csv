@@ -1,5 +1,5 @@
 enrollment_id,student_name,student_phone,course_id,course_name,duration,fees,staff,credits
-1,hendry,9876543289,6,Database Management,2 ,12000,Kim Wexler,3
 2,david,7465398764,8,Artificial Intelligence,6 ,40000,Chuck McGill,6
 3,quil,9876789098,4,Machine Learning,5 ,30000,Gustavo Fring,5
 4,howard,9898987654,9,Cyber Security,5 ,32000,Hank Schrader,5
+5,tharnish,9791330225,1,Python Programming,3 ,15000,Walter White,4
