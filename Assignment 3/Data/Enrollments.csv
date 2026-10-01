@@ -1,5 +1,8 @@
-enrollment_id,student_name,student_phone,course_id,course_name,duration,fees,staff,credits
-2,david,7465398764,8,Artificial Intelligence,6 ,40000,Chuck McGill,6
-3,quil,9876789098,4,Machine Learning,5 ,30000,Gustavo Fring,5
-4,howard,9898987654,9,Cyber Security,5 ,32000,Hank Schrader,5
-5,tharnish,9791330225,1,Python Programming,3 ,15000,Walter White,4
+enrollment_id,student_id,student_name,student_phone,course_id,course_name,duration,fees,staff,credits
+
+1,1,hendry,9809876543,4,Machine Learning,5 ,30000,Gustavo Fring,5
+2,2,howard,9836457874,2,Web Development,4 ,20000,Jesse Pinkman,5
+3,1,hendry,9809876543,3,Data Science,6 ,35000,Saul Goodman,6
+4,2,howard,9836457874,7,Cloud Computing,4 ,25000,Nacho Varga,5
+5,5,guna,8694628466,10,React Development,3 ,17000,Howard Hamlin,4
+6,5,guna,8694628466,2,Web Development,4 ,20000,Jesse Pinkman,5

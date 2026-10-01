@@ -18,7 +18,7 @@ csv_repository = Csv_Repository()
 class Enrollment:
     fields : list
 
-    def save_enrollment(self , student_name : str, student_phone : str ,course : dict) -> None:
+    def save_enrollment(self ,student_id: int, student_name : str, student_phone : str ,course : dict) -> None:
         try:
             enrolls = csv_repository.read(ENROLL_FILE)
             enrollment_id = len(enrolls) + 1
@@ -28,6 +28,7 @@ class Enrollment:
                 self.fields,
                 {
                     "enrollment_id": enrollment_id,
+                    "student_id": student_id,
                     "student_name": student_name,
                     "student_phone": student_phone,
                     "course_id": course["id"],
@@ -48,6 +49,8 @@ class Enrollment:
     def enroll_course(self) -> None:
         try:
 
+            student_id: int = int(input("Enter your Student ID: "))
+            
             student_name : str = input("Enter your name: ")
             if not validation_obj.validate_name(student_name):
                 print("Invalid name. Enroll again")
@@ -82,7 +85,7 @@ class Enrollment:
                     print(f"Fees        : {course['fees']}")
                     print(f"Staff       : {course['staff']}")
                     print(f"Credits     : {course['credits']}")
-                    self.save_enrollment(student_name,student_phone,course)
+                    self.save_enrollment(student_id,student_name,student_phone,course)
                     break
 
             if not found_course:
@@ -145,5 +148,93 @@ class Enrollment:
         else:
             csv_repository.write(ENROLL_FILE,self.fields,updated_enrollments)
             
-            print("cancelled the enrollment")
+            print("cancelled the enrollment") 
+
+
+   
+
+    def filter_enrollments(self) -> None:
+
+        try:
+            course_id: int = int(input("Enter course ID: "))
+
+            enrollments = csv_repository.read(ENROLL_FILE)
+
+            filtered_enrollments = list(
+                filter(
+                    lambda enrollment: int(enrollment["enrollment_id"]) == course_id,
+                    enrollments
+                )
+            )
+
+            if not filtered_enrollments:
+                print("No enrollments found.")
+                return
+
+            for enrollment in filtered_enrollments:
+                print("\nEnrollment ID  :", enrollment["enrollment_id"])
+                print("Student Name     :", enrollment["student_name"])
+                print("Course Name      :", enrollment["course_name"])
+
+        except ValueError:
+            print("Enter a valid number.")
+
+
+    def sort_enrollments(self) -> None:
+
+        enrollments = csv_repository.read(ENROLL_FILE)
+
+        sorted_enrollments = sorted(
+            enrollments,
+            key=lambda enrollment: enrollment["fees"]
+        )
+
+        for enrollment in sorted_enrollments:
+            print("\nStudent Name   :", enrollment["student_name"])
+            print("Course Name      :", enrollment["course_name"])
+            print("Fees             :", enrollment["fees"])
+
+
+
+    def student_summary(self) -> None:
+
+        enrollments = csv_repository.read(ENROLL_FILE)
+
+        student_ids = sorted(set(map( lambda enrollment: enrollment["student_id"] , enrollments)))
+
+        for student_id in student_ids:
+            student_enrollments = list(
+                filter(
+                    lambda enrollment : enrollment["student_id"] == student_id,
+                    enrollments
+                )
+            )
+
+            total_fees =sum(
+                map(
+                    lambda enrollment: int(enrollment["fees"]),
+                    student_enrollments
+                )
+            )
+
+            total_duration = sum(
+                map(
+                    lambda enrollment: int(enrollment["duration"]),
+                    student_enrollments
+                )
+            )
+            total_credits =sum(
+                map(
+                lambda enrollment: int(enrollment["credits"]),
+                    student_enrollments
+                )
+            )
+
+            print("\nStudent ID   :", student_id)
+            print("Student Name   :", student_enrollments[0]["student_name"])
+            print("Total Fees     :", total_fees)
+            print("Total Duration :", total_duration, "Months")
+            print("Total Credits  :", total_credits)
+            print("--------------------------------")
+
 
