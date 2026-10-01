@@ -12,18 +12,23 @@ from Repository.Csv_Repository import Csv_Repository
 
 
 validation_obj = Validation() #validation object
-csv_repository = Csv_Repository()
+# csv_repository = Csv_Repository()
 
 @dataclass
 class Enrollment:
     fields : list
+    csv_repository : Csv_Repository
+
+    # def __init__(self, csv_repo):
+    #     self.csv_repo = csv_repo
+
 
     def save_enrollment(self ,student_id: int, student_name : str, student_phone : str ,course : dict) -> None:
         try:
-            enrolls = csv_repository.read(ENROLL_FILE)
+            enrolls = self.csv_repository.read(ENROLL_FILE)
             enrollment_id = len(enrolls) + 1
 
-            csv_repository.append(
+            self.csv_repository.append(
                 ENROLL_FILE,
                 self.fields,
                 {
@@ -66,7 +71,7 @@ class Enrollment:
             
             course_id : int = int(input("Enter course ID: "))
 
-            courses = csv_repository.read(COURSE_FILE)
+            courses = self.csv_repository.read(COURSE_FILE)
 
             course_count : int = len(courses)
 
@@ -99,7 +104,7 @@ class Enrollment:
             print("No enrollments file found.")
             return
         
-        enrollments: list = csv_repository.read(ENROLL_FILE)
+        enrollments: list = self.csv_repository.read(ENROLL_FILE)
 
         if not enrollments:
             print("No enrollments found.")
@@ -127,7 +132,7 @@ class Enrollment:
             return
         try:
             enrollment_id : int = int(input("enter the enrollment ID : "))
-            enrollments: list = csv_repository.read(ENROLL_FILE)
+            enrollments: list = self.csv_repository.read(ENROLL_FILE)
 
             if not enrollments : 
                 print("no enrollments found")
@@ -146,7 +151,7 @@ class Enrollment:
             print(error)
 
         else:
-            csv_repository.write(ENROLL_FILE,self.fields,updated_enrollments)
+            self.csv_repository.write(ENROLL_FILE,self.fields,updated_enrollments)
             
             print("cancelled the enrollment") 
 
@@ -156,13 +161,13 @@ class Enrollment:
     def filter_enrollments(self) -> None:
 
         try:
-            course_id: int = int(input("Enter course ID: "))
+            enrollment_id: int = int(input("Enter Enrollment ID: "))
 
-            enrollments = csv_repository.read(ENROLL_FILE)
+            enrollments = self.csv_repository.read(ENROLL_FILE)
 
             filtered_enrollments = list(
                 filter(
-                    lambda enrollment: int(enrollment["enrollment_id"]) == course_id,
+                    lambda enrollment: int(enrollment["enrollment_id"]) == enrollment_id,
                     enrollments
                 )
             )
@@ -182,7 +187,7 @@ class Enrollment:
 
     def sort_enrollments(self) -> None:
 
-        enrollments = csv_repository.read(ENROLL_FILE)
+        enrollments = self.csv_repository.read(ENROLL_FILE)
 
         sorted_enrollments = sorted(
             enrollments,
@@ -198,7 +203,7 @@ class Enrollment:
 
     def student_summary(self) -> None:
 
-        enrollments = csv_repository.read(ENROLL_FILE)
+        enrollments = self.csv_repository.read(ENROLL_FILE)
 
         student_ids = sorted(set(map( lambda enrollment: enrollment["student_id"] , enrollments)))
 

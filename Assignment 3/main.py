@@ -1,12 +1,13 @@
 from Service.course_service import Course
 from Service.enrollment_service import Enrollment
+from Repository.Csv_Repository import Csv_Repository
 
 
 fields : list = ['enrollment_id','student_id','student_name','student_phone','course_id','course_name','duration','fees',"staff","credits"]
 
-
+csv_repo = Csv_Repository()
 course_object = Course()
-enroll_object = Enrollment(fields)
+enroll_object = Enrollment(fields,csv_repo)
 
 
 while True:
