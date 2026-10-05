@@ -1,0 +1,14 @@
+[
+    {
+        "enrollment_id": 2,
+        "student_id": 1,
+        "student_name": "vikram",
+        "student_phone": 9807970898,
+        "course_id": 3,
+        "course_name": "Data Science",
+        "duration": 6,
+        "fees": 35000,
+        "staff": "Saul Goodman",
+        "credits": 6
+    }
+]

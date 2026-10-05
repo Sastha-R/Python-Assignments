@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "coursename": "Python Programming",
+        "duration": 3,
+        "fees": 15000,
+        "staff": "Walter White",
+        "credits": 4
+    },
+    {
+        "id": 2,
+        "coursename": "Web Development",
+        "duration": 4,
+        "fees": 20000,
+        "staff": "Jesse Pinkman",
+        "credits": 5
+    },
+    {
+        "id": 3,
+        "coursename": "Data Science",
+        "duration": 6,
+        "fees": 35000,
+        "staff": "Saul Goodman",
+        "credits": 6
+    },
+    {
+        "id": 4,
+        "coursename": "Machine Learning",
+        "duration": 5,
+        "fees": 30000,
+        "staff": "Gustavo Fring",
+        "credits": 5
+    },
+    {
+        "id": 5,
+        "coursename": "Java Programming",
+        "duration": 3,
+        "fees": 18000,
+        "staff": "Mike Ehrmantraut",
+        "credits": 4
+    },
+    {
+        "id": 6,
+        "coursename": "Database Management",
+        "duration": 2,
+        "fees": 12000,
+        "staff": "Kim Wexler",
+        "credits": 3
+    },
+    {
+        "id": 7,
+        "coursename": "Cloud Computing",
+        "duration": 4,
+        "fees": 25000,
+        "staff": "Nacho Varga",
+        "credits": 5
+    },
+    {
+        "id": 8,
+        "coursename": "Artificial Intelligence",
+        "duration": 6,
+        "fees": 40000,
+        "staff": "Chuck McGill",
+        "credits": 6
+    },
+    {
+        "id": 9,
+        "coursename": "Cyber Security",
+        "duration": 5,
+        "fees": 32000,
+        "staff": "Hank Schrader",
+        "credits": 5
+    },
+    {
+        "id": 10,
+        "coursename": "React Development",
+        "duration": 3,
+        "fees": 17000,
+        "staff": "Howard Hamlin",
+        "credits": 4
+    }
+]
