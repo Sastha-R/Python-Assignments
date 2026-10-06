@@ -4,18 +4,19 @@ from config import COURSE_FILE
 from Exception.custom_exceptions import CourseNotFoundError
 from Repository.Json_Repository import Json_Repository
 from dataclasses import dataclass
+from pydantic import BaseModel, ConfigDict
 
 
 # COURSE_FILE : Path = Path("Data/Course_Details.csv")
 
 
-@dataclass
-class Course:
-    csv_repository : Json_Repository
+class Course(BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+    json_repository : Json_Repository
 
     async def display_courses(self) -> None:
         try:
-            courses = await self.csv_repository.read(COURSE_FILE)
+            courses = await self.json_repository.read(COURSE_FILE)
 
             for course in courses:
                 print(f"Course ID   : {course['id']}\n"
@@ -33,7 +34,7 @@ class Course:
         course_name: str = input("Enter course name: ")
         try:
 
-            courses = await self.csv_repository.read(COURSE_FILE)
+            courses = await self.json_repository.read(COURSE_FILE)
 
             course_found = [course for course in courses if course_name.lower() in course["coursename"].lower()]
 
@@ -61,7 +62,7 @@ class Course:
 
     async def sort_course(self) -> None:
 
-            courses = await self.csv_repository.read(COURSE_FILE)
+            courses = await self.json_repository.read(COURSE_FILE)
 
             sorted_courses = sorted( courses, key=lambda course: course["fees"])
 

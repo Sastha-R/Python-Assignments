@@ -5,8 +5,8 @@ import asyncio
 
 
 json_repo = Json_Repository()
-course_object = Course(json_repo)
-enroll_object = Enrollment(json_repo)
+course_object = Course(json_repository=json_repo)
+enroll_object = Enrollment(json_repository=json_repo)
 
 async def main():
     while True:

@@ -4,14 +4,14 @@ from dataclasses import dataclass
 from Utilities.validation import Validation
 from Exception.custom_exceptions import EnrollmentNotFoundError
 from Repository.Json_Repository import Json_Repository
-
-
+from pydantic import BaseModel, ConfigDict
 
 validation_obj = Validation() #validation object
 # csv_repository = Csv_Repository()
 
-@dataclass
-class Enrollment:
+
+class Enrollment(BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
     json_repository : Json_Repository
 
     # def __init__(self, csv_repo):

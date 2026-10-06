@@ -13,8 +13,7 @@ class Json_Repository:
     async def append(self, file_path, data: dict) -> None:
         existing_data = await self.read(file_path)
         existing_data.append(data)
-        with open(file_path, "w") as file:
-            json.dump(existing_data, file, indent=4)
+        await self.write(file_path,existing_data)
 
     def write_file(self, file_path, data: list) -> None:
 
@@ -24,4 +23,4 @@ class Json_Repository:
     async def write(self,file_path,data : list):
         return await asyncio.to_thread(self.write_file,file_path,data)
 
-            
+
