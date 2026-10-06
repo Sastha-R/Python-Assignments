@@ -5,6 +5,7 @@ from Utilities.validation import Validation
 from Exception.custom_exceptions import EnrollmentNotFoundError
 from Repository.Json_Repository import Json_Repository
 from pydantic import BaseModel, ConfigDict
+from models.Student import Student
 
 validation_obj = Validation() #validation object
 # csv_repository = Csv_Repository()
@@ -18,7 +19,7 @@ class Enrollment(BaseModel):
     #     self.csv_repo = csv_repo
 
 
-    async def save_enrollment(self ,student_id: int, student_name : str, student_phone : str ,course : dict) -> None:
+    async def save_enrollment(self,student : Student) -> None:
         try:
             enrolls = await self.json_repository.read(ENROLL_FILE)
             enrollment_id : int  = len(enrolls) + 1
@@ -27,15 +28,15 @@ class Enrollment(BaseModel):
                 ENROLL_FILE,
                 {
                     "enrollment_id": enrollment_id,
-                    "student_id": student_id,
-                    "student_name": student_name,
-                    "student_phone": student_phone,
-                    "course_id": course["id"],
-                    "course_name": course["coursename"],
-                    "duration": course["duration"],
-                    "fees": course["fees"],
-                    "staff": course["staff"],
-                    "credits": course["credits"]
+                    "student_id": student.student_id,
+                    "student_name": student.student_name,
+                    "student_phone": student.student_phone,
+                    "course_id": student.course["id"],
+                    "course_name": student.course["coursename"],
+                    "duration": student.course["duration"],
+                    "fees": student.course["fees"],
+                    "staff": student.course["staff"],
+                    "credits": student.course["credits"]
                 }
 )
 
@@ -84,7 +85,9 @@ class Enrollment(BaseModel):
                 print(f"Fees        : {course['fees']}")
                 print(f"Staff       : {course['staff']}")
                 print(f"Credits     : {course['credits']}")
-                await self.save_enrollment(student_id,student_name,student_phone,course)
+
+                student = Student(student_id = student_id, student_name = student_name, student_phone = student_phone,course = course)
+                await self.save_enrollment(student)
                 break
 
             if not found_course:
