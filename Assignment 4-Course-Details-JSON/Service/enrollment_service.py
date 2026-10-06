@@ -18,12 +18,12 @@ class Enrollment:
     #     self.csv_repo = csv_repo
 
 
-    def save_enrollment(self ,student_id: int, student_name : str, student_phone : str ,course : dict) -> None:
+    async def save_enrollment(self ,student_id: int, student_name : str, student_phone : str ,course : dict) -> None:
         try:
-            enrolls = self.json_repository.read(ENROLL_FILE)
+            enrolls = await self.json_repository.read(ENROLL_FILE)
             enrollment_id : int  = len(enrolls) + 1
 
-            self.json_repository.append(
+            await self.json_repository.append(
                 ENROLL_FILE,
                 {
                     "enrollment_id": enrollment_id,
@@ -45,7 +45,7 @@ class Enrollment:
             return
 
 
-    def enroll_course(self) -> None:
+    async def enroll_course(self) -> None:
         try:
 
             student_id: int = int(input("Enter your Student ID: "))
@@ -65,7 +65,7 @@ class Enrollment:
             
             course_id : int = int(input("Enter course ID: "))
 
-            courses = self.json_repository.read(COURSE_FILE)
+            courses = await self.json_repository.read(COURSE_FILE)
 
             course_count : int = len(courses)
 
@@ -84,7 +84,7 @@ class Enrollment:
                 print(f"Fees        : {course['fees']}")
                 print(f"Staff       : {course['staff']}")
                 print(f"Credits     : {course['credits']}")
-                self.save_enrollment(student_id,student_name,student_phone,course)
+                await self.save_enrollment(student_id,student_name,student_phone,course)
                 break
 
             if not found_course:
@@ -92,13 +92,13 @@ class Enrollment:
         except ValueError:
             print("value  must be a number thranish")
 
-    def display_enrollments(self) -> None:
+    async def display_enrollments(self) -> None:
         
         if not ENROLL_FILE.exists():
             print("No enrollments file found.")
             return
         
-        enrollments: list = self.json_repository.read(ENROLL_FILE)
+        enrollments: list =await  self.json_repository.read(ENROLL_FILE)
 
         if not enrollments:
             print("No enrollments found.")
@@ -119,14 +119,14 @@ class Enrollment:
 
 
 
-    def cancel_enrollment(self) -> None :
+    async def cancel_enrollment(self) -> None :
 
         if not ENROLL_FILE.exists():
             print("no enroll file exist")
             return
         try:
             enrollment_id : int = int(input("enter the enrollment ID : "))
-            enrollments: list = self.json_repository.read(ENROLL_FILE)
+            enrollments: list = await self.json_repository.read(ENROLL_FILE)
 
             if not enrollments : 
                 print("no enrollments found")
@@ -145,19 +145,19 @@ class Enrollment:
             print(error)
 
         else:
-            self.json_repository.write(ENROLL_FILE,updated_enrollments)
+            await self.json_repository.write(ENROLL_FILE,updated_enrollments)
             
             print("cancelled the enrollment") 
 
 
    
 
-    def filter_enrollments(self) -> None:
+    async def filter_enrollments(self) -> None:
 
         try:
             enrollment_id: int = int(input("Enter Enrollment ID: "))
 
-            enrollments = self.json_repository.read(ENROLL_FILE)
+            enrollments = await self.json_repository.read(ENROLL_FILE)
 
             filtered_enrollments = list(
                 filter(
@@ -182,9 +182,9 @@ class Enrollment:
     
 
 
-    def student_summary(self) -> None:
+    async def student_summary(self) -> None:
 
-        enrollments = self.json_repository.read(ENROLL_FILE)
+        enrollments = await self.json_repository.read(ENROLL_FILE)
 
         student_ids = sorted(set(map( lambda enrollment: enrollment["student_id"] , enrollments)))
 

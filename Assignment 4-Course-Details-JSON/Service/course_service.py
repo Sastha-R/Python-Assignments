@@ -13,9 +13,9 @@ from dataclasses import dataclass
 class Course:
     csv_repository : Json_Repository
 
-    def display_courses(self) -> None:
+    async def display_courses(self) -> None:
         try:
-            courses = self.csv_repository.read(COURSE_FILE)
+            courses = await self.csv_repository.read(COURSE_FILE)
 
             for course in courses:
                 print(f"Course ID   : {course['id']}\n"
@@ -29,11 +29,11 @@ class Course:
             print("Course file not found.")
 
 
-    def search_course(self) -> None:
+    async def search_course(self) -> None:
         course_name: str = input("Enter course name: ")
         try:
 
-            courses = self.csv_repository.read(COURSE_FILE)
+            courses = await self.csv_repository.read(COURSE_FILE)
 
             course_found = [course for course in courses if course_name.lower() in course["coursename"].lower()]
 
@@ -59,9 +59,9 @@ class Course:
                 print("----------------------------------------")
 
 
-    def sort_course(self) -> None:
+    async def sort_course(self) -> None:
 
-            courses = self.csv_repository.read(COURSE_FILE)
+            courses = await self.csv_repository.read(COURSE_FILE)
 
             sorted_courses = sorted( courses, key=lambda course: course["fees"])
 

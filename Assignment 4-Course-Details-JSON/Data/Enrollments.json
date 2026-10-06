@@ -1,14 +1,38 @@
 [
     {
-        "enrollment_id": 2,
+        "enrollment_id": 1,
         "student_id": 1,
-        "student_name": "vikram",
-        "student_phone": 9807970898,
-        "course_id": 3,
-        "course_name": "Data Science",
+        "student_name": "hendry",
+        "student_phone": 9898767787,
+        "course_id": 7,
+        "course_name": "Cloud Computing",
+        "duration": 4,
+        "fees": 25000,
+        "staff": "Nacho Varga",
+        "credits": 5
+    },
+    {
+        "enrollment_id": 2,
+        "student_id": 2,
+        "student_name": "john",
+        "student_phone": 8789897878,
+        "course_id": 8,
+        "course_name": "Artificial Intelligence",
         "duration": 6,
-        "fees": 35000,
-        "staff": "Saul Goodman",
+        "fees": 40000,
+        "staff": "Chuck McGill",
+        "credits": 6
+    },
+    {
+        "enrollment_id": 3,
+        "student_id": 1,
+        "student_name": "hendry",
+        "student_phone": 9898767787,
+        "course_id": 8,
+        "course_name": "Artificial Intelligence",
+        "duration": 6,
+        "fees": 40000,
+        "staff": "Chuck McGill",
         "credits": 6
     }
 ]
