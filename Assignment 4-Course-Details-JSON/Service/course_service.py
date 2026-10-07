@@ -40,7 +40,7 @@ class Course(BaseModel):
 
 
             if not course_found:
-                raise CourseNotFoundError("Course not found.")
+                raise CourseNotFoundError(course_name)
 
         except CourseNotFoundError as error:
             print(error)

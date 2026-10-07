@@ -93,7 +93,7 @@ class Enrollment(BaseModel):
             if not found_course:
                 print("\nno such course id")
         except ValueError:
-            print("value  must be a number thranish")
+            print("value  must be a number")
 
     async def display_enrollments(self) -> None:
         
@@ -138,7 +138,7 @@ class Enrollment(BaseModel):
             updated_enrollments = [enrollment for enrollment in enrollments if int(enrollment["enrollment_id"]) != enrollment_id]
 
             if len(updated_enrollments) == len(enrollments):
-                raise EnrollmentNotFoundError("Enrollment not found.")
+                raise EnrollmentNotFoundError(enrollment_id)
 
         
         except ValueError : 
