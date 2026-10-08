@@ -10,7 +10,7 @@ class InvoiceCreate(BaseModel):
     invoice_date : date
     product_name : str
     quantity : int
-    unit_price :int
+    unit_price : float
 
 
 class InvoiceData(BaseModel):
@@ -20,12 +20,23 @@ class InvoiceData(BaseModel):
     customer_name : str
     product_name : str
     quantity : int
-    unit_price :int
-    discount_percentage : int
-    discount_amount : int
-    tax_percentage : int
-    tax_amount : int
-    subtotal : int
-    taxable_amount : int
-    total_amount : int
+    unit_price :float
+    discount_percentage : float
+    discount_amount : float
+    tax_percentage : float
+    tax_amount : float
+    subtotal : float
+    taxable_amount : float
+    total_amount : float
 
+
+class InvoicePatch(BaseModel):
+    invoice_number : str | None = None
+    customer_name : str | None = None
+    customer_email : str | None = None
+    invoice_date : date | None = None
+    product_name : str | None = None
+    quantity : int | None = None
+    unit_price : float | None = None
+
+    
